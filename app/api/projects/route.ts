@@ -57,6 +57,9 @@ export async function POST(request: NextRequest) {
                 name,
                 description,
                 createdById: user.id
+            },
+            include: {
+                _count: { select: { keys: true } }
             }
         });
 
