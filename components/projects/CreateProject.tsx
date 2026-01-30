@@ -32,9 +32,9 @@ export default function CreateProject({ isOpen, onClose, onSuccess }: CreateProj
             });
 
             if (response.ok) {
-                const newProject = await response.json();
+                const data = await response.json();
                 setFormData({ name: '', description: '' });
-                onSuccess(newProject);
+                onSuccess(data.project);
                 onClose();
             } else {
                 const data = await response.json();
