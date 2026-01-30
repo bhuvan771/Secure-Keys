@@ -171,8 +171,8 @@ function formatLogMessage(log: any) {
             </span>
         ),
         // Helper to decide if we should hide details
-        shouldHideDetails: !!((projectName && log.details?.toLowerCase().includes(projectName.toLowerCase())) ||
-            (keyName && log.details?.toLowerCase().includes(keyName.toLowerCase())) ||
+        shouldHideDetails: !!((projectName && (log.details || '').toLowerCase().includes(projectName.toLowerCase())) ||
+            (keyName && (log.details || '').toLowerCase().includes(keyName.toLowerCase())) ||
             log.action === 'LOGIN' || log.action === 'LOGOUT')
     };
 }

@@ -28,8 +28,8 @@ export default function ProjectList({ initialProjects, userRole }: ProjectListPr
     const [deleteConfirm, setDeleteConfirm] = useState<string | null>(null);
 
     const filteredProjects = projects.filter(p =>
-        p.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
-        p.description?.toLowerCase().includes(searchTerm.toLowerCase())
+        (p.name || '').toLowerCase().includes(searchTerm.toLowerCase()) ||
+        (p.description || '').toLowerCase().includes(searchTerm.toLowerCase())
     );
 
     const handleDelete = async (id: string) => {

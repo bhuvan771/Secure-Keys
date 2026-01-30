@@ -32,8 +32,8 @@ export default function UserManagement({ initialUsers, allProjects }: UserManage
         .filter(u => !deletedUserIds.has(u.id))
         .map(u => ({ ...u, role: roleUpdates[u.id] || u.role }))
         .filter(u =>
-            u.username.toLowerCase().includes(searchTerm.toLowerCase()) ||
-            u.email.toLowerCase().includes(searchTerm.toLowerCase())
+            (u.username || '').toLowerCase().includes(searchTerm.toLowerCase()) ||
+            (u.email || '').toLowerCase().includes(searchTerm.toLowerCase())
         );
 
     const refreshUsers = async () => {
