@@ -17,9 +17,12 @@ export async function POST() {
 
         await destroySession();
 
-        return NextResponse.redirect(new URL('/login', process.env.NEXT_PUBLIC_APP_URL || 'http://localhost:3000'));
+        const response = NextResponse.json({ success: true });
+
+        // Clear session cookie explicitly if needed, but destroySession handles it
+        return response;
     } catch (error) {
         console.error('Logout error:', error);
-        return NextResponse.redirect(new URL('/login', process.env.NEXT_PUBLIC_APP_URL || 'http://localhost:3000'));
+        return NextResponse.json({ success: false }, { status: 500 });
     }
 }
